@@ -17,7 +17,7 @@
 --><!-- Note:  A "Server" is not itself a "Container", so you may not
      define subcomponents such as "Valves" at this level.
      Documentation at /docs/config/server.html
- --><Server port="8005" shutdown="SHUTDOWN">
+ --><Server port="8007" shutdown="SHUTDOWN">
   <Listener className="org.apache.catalina.startup.VersionLoggerListener"/>
   <!-- Security listener. Documentation at /docs/config/listeners.html
   <Listener className="org.apache.catalina.security.SecurityListener" />
@@ -60,7 +60,12 @@
          APR (HTTP/AJP) Connector: /docs/apr.html
          Define a non-SSL/TLS HTTP/1.1 Connector on port 8080
     -->
-    <Connector connectionTimeout="20000" port="8081" protocol="HTTP/1.1" redirectPort="8443"/>
+    <Connector URIEncoding="euc-kr" connectionTimeout="20000" port="8087" protocol="HTTP/1.1" redirectPort="8443"/>
+    
+    <!-- URL을 통해서 문자를 보낼때의 기본 인코딩 : IOS-8859-1(한국어지원X)
+       	 URLIEncoding : URL을 통한 데이터 전송 인코딩을 변경 -->
+   
+   
     <!-- A "Connector" using the shared thread pool-->
     <!--
     <Connector executor="tomcatThreadPool"
@@ -153,7 +158,7 @@
              Note: The pattern used is equivalent to using pattern="common" -->
         <Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs" pattern="%h %l %u %t &quot;%r&quot; %s %b" prefix="localhost_access_log" suffix=".txt"/>
 
-      <Context docBase="AndroidServer1" path="/AndroidServer1" reloadable="true" source="org.eclipse.jst.jee.server:AndroidServer1"/><Context docBase="MoutainMate" path="/MoutainMate" reloadable="true" source="org.eclipse.jst.jee.server:MoutainMate"/></Host>
+      <Context docBase="1012Servlet" path="/1012Servlet" reloadable="true" source="org.eclipse.jst.jee.server:1012Servlet"/><Context docBase="1014JSP" path="/1014JSP" reloadable="true" source="org.eclipse.jst.jee.server:1014JSP"/><Context docBase="1015JDBC" path="/1015JDBC" reloadable="true" source="org.eclipse.jst.jee.server:1015JDBC"/><Context docBase="1018CookieSession" path="/1018CookieSession" reloadable="true" source="org.eclipse.jst.jee.server:1018CookieSession"/><Context docBase="MessageSystem" path="/MessageSystem" reloadable="true" source="org.eclipse.jst.jee.server:MessageSystem"/><Context docBase="game" path="/game" reloadable="true" source="org.eclipse.jst.jee.server:game"/><Context docBase="test01" path="/test01" reloadable="true" source="org.eclipse.jst.jee.server:test01"/><Context docBase="test" path="/test" reloadable="true" source="org.eclipse.jst.jee.server:test"/><Context docBase="Fipl" path="/Fipl" reloadable="true" source="org.eclipse.jst.jee.server:Fipl"/></Host>
     </Engine>
   </Service>
 </Server>
